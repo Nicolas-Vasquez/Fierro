@@ -1,4 +1,4 @@
-package fierro;
+﻿package fierro;
 /**
  *
  * @author Nicolaás Vasquez
@@ -95,5 +95,4 @@ public class Usuario {
     public void setAnion(int anion) {
         this.anion = anion;
     }
-
 }

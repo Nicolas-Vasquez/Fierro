@@ -1,4 +1,4 @@
-package fierro;
+﻿package fierro;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -134,5 +134,4 @@ public class PDInicio extends JFrame implements ActionListener {
         vent1.setVisible(true);
 
     }
-
 }

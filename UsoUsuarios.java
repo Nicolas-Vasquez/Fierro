@@ -1,4 +1,4 @@
-package fierro;
+﻿package fierro;
 
 import java.util.ArrayList;
 /**
@@ -21,7 +21,7 @@ public class UsoUsuarios {
         listaUsuarios.add(usuario1);
         listaUsuarios.trimToSize();
     }
-
+ 
     public Usuario getUsuario(int i) {
         return listaUsuarios.get(i);
     }

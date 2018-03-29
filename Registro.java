@@ -1,4 +1,4 @@
-package fierro;
+﻿package fierro;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -259,5 +259,4 @@ public class Registro extends JFrame implements ActionListener, ItemListener {
             }
         }
     }
-
 }

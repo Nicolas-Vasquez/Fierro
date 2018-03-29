@@ -1,4 +1,4 @@
-package fierro;
+﻿package fierro;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -141,5 +141,4 @@ class Terminos extends JFrame implements ActionListener, ChangeListener {
             btn2.setEnabled(false);            
         }
     }
-
 }
