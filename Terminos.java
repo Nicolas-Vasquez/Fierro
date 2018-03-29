@@ -15,6 +15,10 @@ import javax.swing.SwingConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+/**
+ *
+ * @author Nicolaás Vasquez
+ */
 class Terminos extends JFrame implements ActionListener, ChangeListener {
 
     private JLabel etqIm, etq1;
@@ -25,15 +29,17 @@ class Terminos extends JFrame implements ActionListener, ChangeListener {
     private ImageIcon icono;
     private Font fnt1 = new Font("Tahoma", 1, 14);
     private String nya;
-    private Usuario userb = new Usuario();
+    private Usuario user1 = new Usuario();
 
-    public Terminos() {
+    public Terminos(Usuario user1) {
         setLayout(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("Terminos y condiciones");
         icono = new ImageIcon(this.getClass().getResource("images/icono.png"));
         setIconImage(icono.getImage());
-        nya = userb.getNombre() + " " + userb.getApellid();
+        
+        this.user1 = user1;
+        nya = user1.getNombre() + " " + user1.getApellido();
 
         etqIm = new JLabel(icono);
         etqIm.setBounds(500, 20, 60, 60);
@@ -105,14 +111,17 @@ class Terminos extends JFrame implements ActionListener, ChangeListener {
             this.dispose();           
         }
         if(ae.getSource()==btn2){
-            userb.setUsuario();
-            JOptionPane.showMessageDialog(null, userb.getMensaje());
+            UsoUsuarios lista1 = new UsoUsuarios(user1);
+            JOptionPane.showMessageDialog(null, "Usted se a registrdo correctamente");
             PDInicio vent1 = new PDInicio("Fierro");
             vent1.setSize(370, 540);
             vent1.setResizable(false);
             vent1.setLocationRelativeTo(null);
             vent1.setVisible(true);
-            this.dispose();        
+            this.dispose();
+            /*for(int i = 0; i < lista1.getTamano(); i++){
+            System.out.println(lista1.getNombre(i) + lista1.getApellido(i) + lista1.getNombreUsuario(i) + lista1.getClave(i));
+            }*/
         }
         if(ae.getSource()==btn3){
             Registro vent2 = new Registro();

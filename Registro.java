@@ -17,6 +17,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+/**
+ *
+ * @author Nicolaás Vasquez
+ */
 public class Registro extends JFrame implements ActionListener, ItemListener {
 
     private JLabel etqIm, etq1, etq2, etq3, etq4, etq5, etq6, etq7;
@@ -29,6 +33,7 @@ public class Registro extends JFrame implements ActionListener, ItemListener {
     private int dias;
     private boolean cuser;
     private Usuario user1 = new Usuario();
+    private UsoUsuarios lista1 = new UsoUsuarios();
 
     public Registro() {
         setLayout(null);
@@ -171,21 +176,18 @@ public class Registro extends JFrame implements ActionListener, ItemListener {
             user1.setNomusuario(fld4.getText().trim());
             user1.setClave(pfld1.getText().trim());
             user1.setCclave(pfld2.getText().trim());
-            for (int i = 0; i < 10; i++) {
-                if (user1.users[i][0] != null) {
-                    if (user1.users[i][0].equals(user1.getNomusuario())) {
-                        cuser = true;
-                        break;
-                    }
+
+            for (int i = 0; i < lista1.getTamano(); i++) {
+                if (lista1.getNombreUsuario(i).equals(user1.getNombreUsuario())) {
+                    cuser = true;
                 }
-                System.out.println("Vueltas de iterador: " + i);
             }
             Pattern mptr = Pattern.compile("^[\\w-]+(\\.[\\w-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]{2,6})*(\\.[A-Za-z]{2,4})$");
             Matcher mtch = mptr.matcher(user1.getEmail());
 
-            if (user1.getNombre().equals("") || user1.getApellid().equals("") || user1.getEmail().equals("")
-                    || user1.getDian() == 0 || user1.getMesn() == 0 || user1.getAnion() == 0
-                    || user1.getNomusuario().equals("") || user1.getClave().equals("") || user1.getCclave().equals("")) {
+            if (user1.getNombre().equals("") || user1.getApellido().equals("") || user1.getEmail().equals("")
+                    || user1.getDiaNacimiento() == 0 || user1.getMesNacimento() == 0 || user1.getAnioNacimiento() == 0
+                    || user1.getNombreUsuario().equals("") || user1.getClave().equals("") || user1.getCClave().equals("")) {
                 JOptionPane.showMessageDialog(null, "LLene todos los campos.");
             } else if (!mtch.find()) {
                 JOptionPane.showMessageDialog(null, "Correo elctronico invalido.");
@@ -193,10 +195,10 @@ public class Registro extends JFrame implements ActionListener, ItemListener {
                 JOptionPane.showMessageDialog(null, "El nombre de usuario ya existe. Elija otro.");
             } else if (user1.getClave().length() < 6) {
                 JOptionPane.showMessageDialog(null, "La clave debe tener al menos seis caracteres.");
-            } else if (!user1.getClave().equals(user1.getCclave())) {
+            } else if (!user1.getClave().equals(user1.getCClave())) {
                 JOptionPane.showMessageDialog(null, "La clave y su confirmacion no coinciden.");
             } else {
-                Terminos vent3 = new Terminos();
+                Terminos vent3 = new Terminos(user1);
                 vent3.setSize(590, 500);
                 vent3.setLocationRelativeTo(null);
                 vent3.setResizable(false);

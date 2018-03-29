@@ -1,34 +1,42 @@
 package fierro;
-
+/**
+ *
+ * @author Nicolaás Vasquez
+ */
 public class Usuario {
 
-    private static String nombre, apellid, email, nomusuario, clave, cclave;
-    private String mensaje;
-
-    public String getMensaje() {
-        return mensaje;
-    }
+    private String nombre, apellido, email, nomusuario, clave, cclave;
     private int dian, mesn, anion;
-    static String users[][] = new String[10][2];
 
     public Usuario() {
-        users[0][0] = "Admin";
-        users[0][1] = "123456";
+        
     }
-
+    
+    public Usuario(String nombre, String apellido, String email, String nomusuario, 
+                   String clave, int dianacimiento, int mesnacimiento, int anionacimiento){
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
+        this.nomusuario = nomusuario;
+        this.clave = clave;
+        this.dian = dianacimiento;
+        this.mesn = mesnacimiento;
+        this.anion = anionacimiento;
+    }
+    
     public String getNombre() {
         return nombre;
     }
 
-    public String getApellid() {
-        return apellid;
+    public String getApellido() {
+        return apellido;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public String getNomusuario() {
+    public String getNombreUsuario() {
         return nomusuario;
     }
 
@@ -36,19 +44,19 @@ public class Usuario {
         return clave;
     }
 
-    public String getCclave() {
+    public String getCClave() {
         return cclave;
     }
 
-    public int getDian() {
+    public int getDiaNacimiento() {
         return dian;
     }
 
-    public int getMesn() {
+    public int getMesNacimento() {
         return mesn;
     }
 
-    public int getAnion() {
+    public int getAnioNacimiento() {
         return anion;
     }
 
@@ -56,8 +64,8 @@ public class Usuario {
         this.nombre = nombre;
     }
 
-    public void setApellid(String apellid) {
-        this.apellid = apellid;
+    public void setApellid(String apellido) {
+        this.apellido = apellido;
     }
 
     public void setEmail(String email) {
@@ -88,21 +96,4 @@ public class Usuario {
         this.anion = anion;
     }
 
-    public void setUsuario() {
-        int ui = 0;
-        for (int i = 0; i < 10; i++) {
-            if (ui < 10 && users[i][0] != null) {
-                ui++;
-            }
-        }
-        System.out.println("Numero de usuarios: " + ui);
-        if (ui == 10) {
-            mensaje = "No hay mas cupos. Lo sentimos\npero no puede registrarse";
-        } else {
-            System.out.println("Registro :" + ui);
-            users[ui][0] = nomusuario;
-            users[ui][1] = clave;
-            mensaje = "Usted se a registrado correctamente";
-        }
-    }
 }

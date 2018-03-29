@@ -13,6 +13,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+/**
+ *
+ * @author Nicolaás Vasquez
+ */
 public class PDInicio extends JFrame implements ActionListener {
 
     private JLabel etqIm, etq1, etq2;
@@ -79,16 +83,17 @@ public class PDInicio extends JFrame implements ActionListener {
         add(btn2);
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btn1) {
-            Usuario usuarioa = new Usuario();
+            UsoUsuarios lista1 = new UsoUsuarios();
             usr = fild1.getText().trim();
             clv = fild2.getText().trim();
             cusr = cclv = false;
-            for (int i = 0; i < 10 && !cusr && !cclv; i++) {
-                if (usr.equals(usuarioa.users[i][0])) {
+            for (int i = 0; i < lista1.getTamano() && !cusr && !cclv; i++) {
+                if (usr.equals(lista1.getNombreUsuario(i))) {
                     cusr = true;
-                    if (clv.equals(usuarioa.users[i][1])) {
+                    if (clv.equals(lista1.getClave(i))) {
                         cclv = true;
                     }
                 }
@@ -99,7 +104,7 @@ public class PDInicio extends JFrame implements ActionListener {
 
             } else if (cusr) {
                 if (cclv) {
-                    System.out.println("funca");
+                    System.out.println("Ingresó");
                     System.exit(0);
 
                 } else {
